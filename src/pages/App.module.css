@@ -4,9 +4,10 @@
 
 .card {
   margin: 5px 0px;
+  cursor: pointer;
 }
 
-.buttonContainer {
+.buttonContainer, .centerImage, .centerCol {
   display: flex;
   justify-content: center;
   align-items: center;    
@@ -15,4 +16,9 @@
 
 .buttonContainer button {
   margin: 5px;
+}
+
+.pokemonDetailImage {
+  width: 150px;
+  height: 150px;
 }
