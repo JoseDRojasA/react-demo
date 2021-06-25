@@ -1,0 +1,11 @@
+.centerImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;    
+  align-content: center;  
+}
+
+.pokemonDetailImage {
+  width: 150px;
+  height: 150px;
+}

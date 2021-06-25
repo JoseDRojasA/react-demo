@@ -7,7 +7,7 @@
   cursor: pointer;
 }
 
-.buttonContainer, .centerImage, .centerCol {
+.buttonContainer, .centerCol {
   display: flex;
   justify-content: center;
   align-items: center;    
@@ -16,9 +16,4 @@
 
 .buttonContainer button {
   margin: 5px;
-}
-
-.pokemonDetailImage {
-  width: 150px;
-  height: 150px;
 }

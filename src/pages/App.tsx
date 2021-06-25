@@ -5,20 +5,15 @@ import {
   Row,
   Col,
   Button,
-  Modal,
-  Table,
 } from "react-bootstrap";
 import { PokemonDetails } from "../models/pokemon-details";
 import { PokemonPreview } from "../models/pokemon-preview";
 import { PokemonPreviewReponse } from "../models/pokemon-preview-reponse";
+import { capitalizeFirstLetter } from "../shared/string-transformations";
+import { PokemonDetailsModel } from './PokemonDetailsModal';
 import styles from "./App.module.css";
 
 const POKE_API_ENDPOINT = "https://pokeapi.co/api/v2/pokemon";
-
-const capitalizeFirstLetter = (string?: string) => {
-  if (!string) return '';
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
 
 const loadPokemons = async (
   setPokemons: Function,
@@ -113,56 +108,6 @@ function App() {
     );
   }
 
-  let pokemonDetailsModal = null;
-
-  if (pokemonDetails) {
-    const stats = pokemonDetails?.stats?.map((stat, index) => (
-      <tr key={`stats_${index}`}>
-        <td>{stat.stat.name}</td>
-        <td>{stat.base_stat}</td>
-      </tr>
-    ));
-    let statSection = null;
-    if (stats) {
-      statSection = (
-        <section>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>Statistic</th>
-                <th>Value</th>
-              </tr>
-            </thead>
-            <tbody>{stats}</tbody>
-          </Table>
-          
-        </section>
-      );
-    }
-    pokemonDetailsModal = (
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header>
-          <Modal.Title>{capitalizeFirstLetter(pokemonDetails?.name)}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <section className={styles.centerImage}>
-            <img
-              alt={`${pokemonDetails.name} Front`}
-              src={pokemonDetails?.sprites?.front_default}
-              className={styles.pokemonDetailImage}
-            />
-          </section>
-          {statSection}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    );
-  }
-
   return (
     <main>
       <h1 className={styles.title}>Pokedex</h1>
@@ -178,7 +123,7 @@ function App() {
         <br />
         {nextButton}
       </div>
-      {pokemonDetailsModal}
+      <PokemonDetailsModel pokemonDetails={pokemonDetails} show={show} handleClose={handleClose}/>
     </main>
   );
 }
