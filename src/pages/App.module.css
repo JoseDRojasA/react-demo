@@ -1,0 +1,18 @@
+.title {
+  text-align: center;
+}
+
+.card {
+  margin: 5px 0px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;    
+  align-content: center;  
+}
+
+.buttonContainer button {
+  margin: 5px;
+}
